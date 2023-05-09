@@ -1,9 +1,7 @@
 import { Container, useColorModeValue } from '@chakra-ui/react';
 import axios from 'axios';
 import React from 'react';
-import config from '../../config/general.config';
 import { ProjectsTable } from '../components/Dashboard/Leaderboard';
-import SEO from '../components/SEO/SEO';
 
 export type memberDetailsType = {
   id: string;
@@ -48,30 +46,21 @@ export default function Projects({ projectsData }: propsType) {
     setData(newFilter);
   };
   return (
-    <>
-      <SEO
-        title={`${config.general.name} - Projects`}
-        description={`${config.general.name} Projects for SuperteamDAO`}
-        image={`https://res.cloudinary.com/demonicirfan/image/upload/v1669216518/Frame_910_ofy3nr.png`}
+    <Container
+      m="0"
+      p="0"
+      maxW={'full'}
+      backgroundColor={useColorModeValue(
+        'superteamSurfacePrimaryLM',
+        'superteamSurfacePrimaryDM'
+      )}
+    >
+      <ProjectsTable
+        row={data}
+        sortOrder={'none'}
+        searchResult={searchResult}
       />
-      <main>
-        <Container
-          m="0"
-          p="0"
-          maxW={'full'}
-          backgroundColor={useColorModeValue(
-            'superteamWhite.100',
-            'superteamGreyDT.1000'
-          )}
-        >
-          <ProjectsTable
-            row={data}
-            sortOrder={'none'}
-            searchResult={searchResult}
-          />
-        </Container>
-      </main>
-    </>
+    </Container>
   );
 }
 

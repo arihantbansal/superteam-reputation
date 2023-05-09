@@ -18,6 +18,7 @@ import { useState } from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { skillKind } from '../../enums/skill';
 import CustomTag from '../HOC/Tag.HOC';
+import MedalSVG from '../Logo/MedalSVG';
 import { receivedXPFromAirtableType } from './Row/interfaces/airtableRecievedXP';
 
 type propsType = {
@@ -90,14 +91,8 @@ const DashboardHeader = ({
   );
   const darkTextColor = useColorModeValue(
     'superteamBlack.100',
-    'superteamWhite.100'
+    'superteamSurfacePrimaryLM.100'
   );
-
-  const pillBgColor = useColorModeValue(
-    'rgba(251, 252, 253, 1)',
-    'rgba(22, 26, 34, 0.72)'
-  );
-
   return (
     <Container
       fontFamily={'Inter'}
@@ -133,7 +128,7 @@ const DashboardHeader = ({
             fontWeight="800"
             color={useColorModeValue(
               'superteamBlack.100',
-              'superteamWhite.100'
+              'superteamSurfacePrimaryLM.100'
             )}
             display="flex"
             gap="0.5rem"
@@ -172,7 +167,7 @@ const DashboardHeader = ({
               <Input
                 color={useColorModeValue(
                   'superteamGreyDT.700',
-                  'superteamWhite.100'
+                  'superteamSurfacePrimaryLM.100'
                 )}
                 placeholder="Search User"
                 outline={'1px solid '}
@@ -204,33 +199,26 @@ const DashboardHeader = ({
           </Box>
         </VStack>
         <HStack
-          backgroundColor={useColorModeValue(
-            'superteamWhite',
-            'superteamGreyDT.900'
-          )}
           align={'top'}
-          height="full"
-          padding="4"
+          minH={'13rem'}
           gap="1.2rem"
           width={['full', 'auto', 'auto', 'auto']}
           justify={'space-between'}
-          boxShadow="inner"
-          rounded={'8px'}
         >
-          <Box display="flex" flexDir={'column'} alignItems="start">
+          <Box display="flex" flexDir={'column'} alignItems="end">
             <HStack
-              marginStart={'1.2rem'}
               width={'fit-content'}
               roundedTop={'4px'}
-              padding="12px 16px"
+              padding="6px 12px"
               fontSize={'13px'}
-              color={useColorModeValue('superteamBlack', 'superteamWhite')}
+              backgroundColor={useColorModeValue(
+                'superteamBlueLT.800',
+                'superteamOrange.800'
+              )}
+              color="white"
               whiteSpace="nowrap"
-              rounded={'4px'}
-              backgroundClip={pillBgColor}
-              boxShadow="inner"
             >
-              <Text as="b">Weekly top: </Text>
+              <Text>Weekly top : </Text>
               <Select
                 variant="unstyled"
                 fontSize={'13px'}
@@ -263,6 +251,7 @@ const DashboardHeader = ({
               padding={'16px 20px'}
               roundedBottom="4px"
               roundedTopLeft={'4px'}
+              border={'1px solid'}
               borderColor={useColorModeValue(
                 'superteamBlueLT.800',
                 'superteamOrange.800'
@@ -279,36 +268,35 @@ const DashboardHeader = ({
                       w={'100%'}
                       justifyContent="space-between"
                       key={index}
-                      padding={'12px 24px'}
-                      rounded={'4px'}
-                      boxShadow="lg"
                       flexDir={'row'}
-                      bgColor={pillBgColor}
                     >
                       <HStack gap="1.2rem" alignItems={'flex-start'}>
-                        <Text
-                          lineHeight={'12px'}
-                          fontWeight={'500'}
-                          color={darkTextColor}
-                          fontSize={'14px'}
-                          textAlign={'start'}
-                        >
-                          {index + 1}.
-                        </Text>
-                        <Text
-                          lineHeight={'12px'}
-                          color={darkTextColor}
-                          fontWeight={'500'}
-                          fontSize={'14px'}
-                          textAlign={'start'}
-                        >
-                          {el.name.trim()}
-                        </Text>
+                        <MedalSVG index={index + 1} showIndex={false} />
+                        <VStack alignItems={'start'}>
+                          <Text
+                            lineHeight={'12px'}
+                            fontWeight={'600'}
+                            color={darkTextColor}
+                            fontSize={'14px'}
+                            textTransform="capitalize"
+                            textAlign={'start'}
+                          >
+                            {el.name.split('#')[0]}
+                          </Text>
+                          <Text
+                            lineHeight={'10px'}
+                            color={lightTextColor}
+                            opacity="0.8"
+                            fontSize={'12px'}
+                          >
+                            {el.name}
+                          </Text>
+                        </VStack>
                       </HStack>
                       <HStack>
                         <Text
+                          fontWeight={'600'}
                           color={darkTextColor}
-                          fontWeight={'500'}
                           fontSize={'14px'}
                         >
                           {el.xp.total_amount}
@@ -395,7 +383,7 @@ const DashboardHeader = ({
                     ),
                     color: useColorModeValue(
                       'superteamBlack.100',
-                      'superteamWhite.100'
+                      'superteamSurfacePrimaryLM.100'
                     ),
                   }}
                   _focus={{
@@ -405,7 +393,7 @@ const DashboardHeader = ({
                     ),
                     color: useColorModeValue(
                       'superteamBlack.100',
-                      'superteamWhite.100'
+                      'superteamSurfacePrimaryLM.100'
                     ),
                   }}
                 >
@@ -427,7 +415,7 @@ const DashboardHeader = ({
                     ),
                     color: useColorModeValue(
                       'superteamBlack.100',
-                      'superteamWhite.100'
+                      'superteamSurfacePrimaryLM.100'
                     ),
                   }}
                   _focus={{
@@ -437,7 +425,7 @@ const DashboardHeader = ({
                     ),
                     color: useColorModeValue(
                       'superteamBlack.100',
-                      'superteamWhite.100'
+                      'superteamSurfacePrimaryLM.100'
                     ),
                   }}
                 >
@@ -462,7 +450,7 @@ const DashboardHeader = ({
                     ),
                     color: useColorModeValue(
                       'superteamBlack.100',
-                      'superteamWhite.100'
+                      'superteamSurfacePrimaryLM.100'
                     ),
                   }}
                   _focus={{
@@ -472,7 +460,7 @@ const DashboardHeader = ({
                     ),
                     color: useColorModeValue(
                       'superteamBlack.100',
-                      'superteamWhite.100'
+                      'superteamSurfacePrimaryLM.100'
                     ),
                   }}
                 >
